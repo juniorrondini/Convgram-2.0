@@ -1,96 +1,113 @@
 # Convgram 2.0
 
-**Descrição:**
-O Convgram 2.0 é um aplicativo de mensagens inspirado no WhatsApp, projetado para proporcionar uma experiência de comunicação instantânea eficiente. O software utiliza **Socket.io** para comunicação em tempo real e **Supabase** como banco de dados backend.
+**Description:**
+Convgram 2.0 is a messaging application inspired by WhatsApp, designed to provide an efficient instant communication experience. The software uses **Socket.io** for real-time communication and **Supabase** as the backend database.
 
-Atualmente, o projeto apresenta algumas falhas que precisam ser corrigidas para garantir um funcionamento completo e sem interrupções. Enquanto a interface do aplicativo já está estruturada, ajustes são necessários para aprimorar a integração com o **Supabase** e otimizar o código base.
+Currently, the project has some issues that need to be fixed to ensure complete and uninterrupted functionality. While the application interface is already structured, adjustments are needed to improve integration with **Supabase** and optimize the codebase.
 
-**Funcionalidades:**
+**Features:**
 
-- Funcionalidade 1: Descrição da funcionalidade.
-- Funcionalidade 2: Descrição da funcionalidade.
-- ...
+Convgram 2.0 aims to integrate the best features of existing social networks, making the communication experience more interactive, fun, and practical. The planned features include:
 
-**Tecnologias Utilizadas:**
+- **Real-time messaging:** Instant communication via **Socket.io**. *(Currently functional but has WebSocket connection issues on localhost.)*
+- **Message customization:** Ability to send **Tenor** GIFs, similar to **Discord**. *(Not yet implemented.)*
+- **Screen shake effect:** Similar to the old **MSN**, to grab user attention. *(Not yet implemented.)*
+- **Status updates:** Feature inspired by **Instagram** and **TikTok**, allowing users to share temporary images and videos. *(Not yet implemented.)*
+- **Security:** Implementation of **end-to-end encryption** to protect user messages and data. *(Not yet implemented.)*
+- **Cross-platform application:** Future development for **iOS and Android**, making Convgram accessible on any device. *(Not yet implemented.)*
+
+**Technologies Used:**
 
 - ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) [TypeScript](https://www.typescriptlang.org/)
-- ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
-- ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
-- ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+- ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 - ![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=socket.io&logoColor=white) [Socket.io](https://socket.io/)
 - ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white) [Supabase](https://supabase.io/)
 
-**Instalação:**
+**Installation:**
 
-1. Clone o repositório:
+1. Clone the repository:
    ```bash
    git clone https://github.com/juniorrondini/Convgram-2.0.git
    ```
-2. Navegue até o diretório do projeto:
+2. Navigate to the project directory:
    ```bash
    cd Convgram-2.0
    ```
-3. Instale as dependências:
+3. Install dependencies:
    ```bash
    npm install
    ```
-4. Inicie o aplicativo:
+4. Start the application:
    ```bash
    npm start
    ```
 
-**Correções Futuras (Future Fixes):**
-Abaixo estão os principais erros identificados que precisam ser corrigidos para garantir o funcionamento adequado do aplicativo:
+**Future Fixes:**
+Below are the main identified errors that need to be fixed to ensure proper application functionality:
 
-1. **Erro de Recursão Infinita no Supabase:**
-   - Ocorre na relação `chat_participants`, resultando em falhas ao carregar chats.
-   - Código de erro: `42P17`.
-   - **Possível Causa:** Configuração incorreta das políticas de linha de segurança (RLS), gerando recursão infinita ao buscar registros.
-   - **Solução:** Revisar e ajustar as políticas RLS para evitar loops recursivos ao consultar os dados.
+1. **Infinite Recursion Error in Supabase:**
+   - Occurs in the `chat_participants` relation, causing chat loading failures.
+   - Error code: `42P17`.
+   - **Possible Cause:** Incorrect configuration of Row-Level Security (RLS) policies, generating infinite recursion when fetching records.
+   - **Solution:** Review and adjust RLS policies to prevent recursive loops when querying data.
 
-2. **Erro de Autenticação no Supabase:**
-   - Mensagem: `Invalid login credentials`.
-   - **Possível Causa:** Credenciais inválidas ou tokens de autenticação mal configurados.
-   - **Solução:** Verificar a lógica de autenticação e garantir que as credenciais sejam validadas corretamente pelo Supabase.
+2. **Authentication Error in Supabase:**
+   - Message: `Invalid login credentials`.
+   - **Possible Cause:** Invalid credentials or misconfigured authentication tokens.
+   - **Solution:** Verify authentication logic and ensure credentials are correctly validated by Supabase.
 
-3. **Erro de Requisição Cross-Origin (CORS):**
-   - Bloqueios de requisição para `http://localhost:3001/socket.io`.
-   - **Possível Causa:** Configuração incorreta dos cabeçalhos de CORS no backend, impedindo requisições de origens diferentes.
-   - **Solução:** Habilitar CORS no backend e garantir permissões adequadas para requisições externas.
+3. **Cross-Origin Request (CORS) Error:**
+   - Requests blocked for `http://localhost:3001/socket.io`.
+   - **Possible Cause:** Incorrect backend CORS headers configuration, preventing requests from different origins.
+   - **Solution:** Enable CORS on the backend and ensure appropriate permissions for external requests.
 
-4. **Erro no Service Worker:**
-   - `FetchEvent.respondWith()` retornando erro.
-   - **Possível Causa:** Service Worker efetuando chamadas `fetch()` inválidas.
-   - **Solução:** Revisar a configuração do Service Worker e corrigir as chamadas de rede.
+4. **Service Worker Error:**
+   - `FetchEvent.respondWith()` returning an error.
+   - **Possible Cause:** Service Worker making invalid `fetch()` calls.
+   - **Solution:** Review Service Worker configuration and fix network calls.
 
-5. **Falha na Conexão com Socket.io:**
-   - Problemas ao carregar `socket.io` no ambiente local.
-   - **Possível Causa:** Configuração incorreta do servidor WebSocket ou falhas na conexão entre cliente e servidor.
-   - **Solução:** Garantir que o servidor WebSocket está configurado corretamente e que os eventos de conexão estão sendo disparados corretamente.
+5. **Socket.io Connection Failure:**
+   - Issues loading `socket.io` in the local environment.
+   - **Possible Cause:** Incorrect WebSocket server configuration or client-server connection failures.
+   - **Solution:** Ensure WebSocket server is properly configured and that connection events are being triggered correctly.
 
-Agradecemos a todos que contribuírem para a melhoria deste projeto! 🚀
+**Supabase Repository Access:**
+Due to limitations of the free Supabase version, the database cannot be linked directly to GitHub. If you need database access for debugging and improvement suggestions, request inclusion in the Supabase repository.
 
-**Contribuição:**
-Sinta-se à vontade para contribuir com o projeto. Para isso:
+**Future Features:**
+- Screen shake effect, similar to MSN Messenger.
+- Integration with **Tenor GIFs**.
+- Implementation of a **real-time translation API** for conversations.
+- Integration with **AI** for image generation, audio transcription, and other advanced features.
+- End-to-end encryption to ensure user security and privacy.
+- **iOS and Android application** to enhance accessibility.
+- **Instagram and TikTok-style status updates** for sharing temporary content.
 
-1. Faça um fork do repositório.
-2. Crie uma nova branch:
+We appreciate all contributions to improve this project! 🚀
+
+**Contributing:**
+Feel free to contribute to the project. To do so:
+
+1. Fork the repository.
+2. Create a new branch:
    ```bash
-   git checkout -b minha-nova-funcionalidade
+   git checkout -b my-new-feature
    ```
-3. Faça suas alterações e commit:
+3. Make your changes and commit:
    ```bash
-   git commit -m 'Adiciona nova funcionalidade'
+   git commit -m 'Add new feature'
    ```
-4. Envie para o repositório remoto:
+4. Push to the remote repository:
    ```bash
-   git push origin minha-nova-funcionalidade
+   git push origin my-new-feature
    ```
-5. Abra um Pull Request.
+5. Open a Pull Request.
 
-**Licença:**
-Este projeto está licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT).
+**License:**
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
-**Contato:**
-Para dúvidas ou sugestões, entre em contato através do e-mail: [jjrondinijj@gmail.com](mailto:jjrondinijj@gmail.com).
+**Contact:**
+For questions or suggestions, contact us at: [jjrondinijj@gmail.com](mailto:jjrondinijj@gmail.com).
 
