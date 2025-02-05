@@ -44,6 +44,33 @@ Convgram 2.0 aims to integrate the best features of existing social networks, ma
    npm start
    ```
 
+**Setting Up the Database**
+
+To ensure proper functionality, you must set up the Supabase database. Follow these steps:
+
+1. **Install Supabase CLI (if not installed):**
+   ```bash
+   npm install -g supabase
+   ```
+
+2. **Start Supabase locally:**
+   ```bash
+   supabase start
+   ```
+
+3. **Apply the database schema:**
+   ```bash
+   supabase db push
+   ```
+
+Alternatively, if you need to manually set up the database, you can use the provided SQL schema:
+
+```bash
+psql -h db.supabase.co -U postgres -d your_database_name -f database/schema.sql
+```
+
+This command will execute the SQL script located in the `/database/` directory, setting up the necessary tables.
+
 **Future Fixes:**
 Below are the main identified errors that need to be fixed to ensure proper application functionality:
 
